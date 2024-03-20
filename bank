@@ -1,0 +1,73 @@
+import java.lang.*;
+import java.util.*;
+class BankSystem
+{
+    String dep = " ";
+    String account = " ";
+    String acType = " ";
+    int balance = 0;
+    
+    BankSystem(String dep, String account, String acType, int balance)
+    {
+      this.dep = dep;
+      this.account = account;
+      this.acType = acType;
+      this.balance = balance;
+    }
+    
+    void deposit(int amount)
+    {
+      this.balance += amount;
+    }
+    
+    void withdraw(int amount) 
+    {
+       if(amount < balance)
+       {
+         this.balance -= amount;
+       }
+       
+       else 
+       {
+         System.out.println("Amount insufficient");
+       }
+    
+    }
+    void getDetails()
+    {
+      System.out.println("Name is "+dep);
+      System.out.println("Account Number is "+account);
+      System.out.println("Account type is "+acType);
+      System.out.println("Balance is "+balance);
+    }
+    
+    public static void main(String[] args) 
+    {
+       BankSystem b = new BankSystem("Kunal","220113212","Saving",222000);
+       Scanner sc = new Scanner(System.in);
+       int choice, amount;
+       do
+       {
+          System.out.println("Press 1 for depositing");
+          System.out.println("Press 2 for withdrawing");
+          System.out.println("Press 3 for displaying");
+          System.out.println("Press -1 to EXIT");
+          choice = sc.nextInt();
+          if(choice == 1) 
+          {
+            System.out.println("Enter the amount to deposit");
+            amount = sc.nextInt();
+            b.deposit(amount);
+          }
+          else if(choice == 2) 
+          {
+            System.out.println("Enter the amount to withdraw");
+            amount = sc.nextInt();
+            b.withdraw(amount);
+          }
+          else if(choice == 3) b.getDetails();
+          
+        }
+        while(choice != -1);
+    }
+}     
